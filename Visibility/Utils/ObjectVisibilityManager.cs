@@ -33,11 +33,11 @@ public class ObjectVisibilityManager
 		{
 			case ObjectType.Character when !thisPtr->GameObject.RenderFlags.TestFlag(VisibilityFlags.Invisible):
 				this.hiddenObjectIds[thisPtr->GameObject.EntityId] = Environment.TickCount64;
-				thisPtr->GameObject.RenderFlags |= (int)VisibilityFlags.Invisible;
+				thisPtr->GameObject.RenderFlags |= (FFXIVClientStructs.FFXIV.Client.Game.Object.VisibilityFlags)VisibilityFlags.Invisible;
 				break;
 			case ObjectType.Companion when !thisPtr->GameObject.RenderFlags.TestFlag(VisibilityFlags.Invisible):
 				this.hiddenMinionObjectIds[thisPtr->CompanionOwnerId] = Environment.TickCount64;
-				thisPtr->GameObject.RenderFlags |= (int)VisibilityFlags.Invisible;
+				thisPtr->GameObject.RenderFlags |= (FFXIVClientStructs.FFXIV.Client.Game.Object.VisibilityFlags)VisibilityFlags.Invisible;
 				break;
 		}
 	}
@@ -53,13 +53,13 @@ public class ObjectVisibilityManager
 			                               thisPtr->GameObject.RenderFlags.TestFlag(VisibilityFlags.Invisible):
 				this.hiddenObjectIds.Remove(thisPtr->GameObject.EntityId);
 				this.objectIdsToShow.Remove(thisPtr->GameObject.EntityId);
-				thisPtr->GameObject.RenderFlags &= ~(int)VisibilityFlags.Invisible;
+				thisPtr->GameObject.RenderFlags &= ~(FFXIVClientStructs.FFXIV.Client.Game.Object.VisibilityFlags)VisibilityFlags.Invisible;
 				return true;
 			case ObjectType.Companion when this.minionObjectIdsToShow.ContainsKey(thisPtr->CompanionOwnerId) &&
 			                               thisPtr->GameObject.RenderFlags.TestFlag(VisibilityFlags.Invisible):
 				this.hiddenMinionObjectIds.Remove(thisPtr->CompanionOwnerId);
 				this.minionObjectIdsToShow.Remove(thisPtr->CompanionOwnerId);
-				thisPtr->GameObject.RenderFlags &= ~(int)VisibilityFlags.Invisible;
+				thisPtr->GameObject.RenderFlags &= ~(FFXIVClientStructs.FFXIV.Client.Game.Object.VisibilityFlags)VisibilityFlags.Invisible;
 				return true;
 		}
 

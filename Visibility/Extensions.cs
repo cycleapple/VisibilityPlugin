@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 
 using Dalamud.Game.ClientState.Objects.Types;
 
@@ -44,5 +44,5 @@ public static class Extensions
 		return new string(arr);
 	}
 
-	public static bool TestFlag(this int value, VisibilityFlags flag) => (value & (byte)flag) != 0;
+	public static bool TestFlag(this FFXIVClientStructs.FFXIV.Client.Game.Object.VisibilityFlags value, VisibilityFlags flag) => ((ulong)value & (ulong)flag) != 0;
 }
